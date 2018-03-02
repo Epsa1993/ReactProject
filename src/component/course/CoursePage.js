@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 
 import * as courseAction from '../../action/courseAction';
@@ -7,25 +7,25 @@ import CourseList from './CourseList';
 
 // import CSSModules from 'react-css-modules';
 
-class CoursePage extends React.Component{
-	constructor(props, context){
+class CoursePage extends React.Component {
+	constructor(props, context) {
 		super(props, context);
 
 		this.state = {
-			course: {title: null}
+			course: { title: null }
 		};
 
 		this.onTitleChange = this.onTitleChange.bind(this);
 		this.onClickSave = this.onClickSave.bind(this);
 	}
 
-	onTitleChange(event){
+	onTitleChange(event) {
 		const course = this.state.course;
 		course.title = event.target.value;
-		this.setState({course: course});
+		this.setState({ course: course });
 	}
 
-	onClickSave(){
+	onClickSave() {
 		// alert(`saving ${this.state.course.title}`);
 		//this.props.createCourse(this.state.course);
 		// createCourse: course =>dispatch(courseAction.createCourse(course)) (in dispatch fun just for ref)
@@ -33,10 +33,10 @@ class CoursePage extends React.Component{
 	}
 
 
-	render(){
-    const {courses} =this.props;
+	render() {
+		const { courses } = this.props;
 
-		return(
+		return (
 			<div className="container">
 				<h1>Courses</h1>
 				<h2>Add Courses</h2>
@@ -51,7 +51,7 @@ class CoursePage extends React.Component{
 					value="save"
 					onClick={this.onClickSave}
 				/>
-        <CourseList courses={ courses }></CourseList>
+				<CourseList courses={courses}></CourseList>
 			</div>
 
 		);
@@ -59,15 +59,15 @@ class CoursePage extends React.Component{
 	}
 }
 
-function mapStateToProps(state, ownProps){
-  console.log(state);
+function mapStateToProps(state, ownProps) {
+	console.log(state, "props data");
 	return {
-		courses: state.course
+		courses: state.courses
 	};
 }
 
-function mapDispatchToProps(dispatch){
-	return{
+function mapDispatchToProps(dispatch) {
+	return {
 		actions: bindActionCreators(courseAction, dispatch)
 	};
 }

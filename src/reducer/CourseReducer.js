@@ -12,7 +12,6 @@ import * as types from '../action/actionTypes';
 // 			}
 
 export default function loadCourseReducer(state =[], action){
-  console.log(action);
 	switch(action.type){
 		case types.LOAD_COURSES_SUCCESS:
 			return action.courses;

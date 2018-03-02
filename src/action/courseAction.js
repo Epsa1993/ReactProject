@@ -6,9 +6,10 @@ export function loadCoursesSuccess(courses) {
 }
 
 export function loadCourses() {
+  console.log("this will get call");
   return function (dispatch) {
     return courseApi.getAllCourses().then((courses) => {
-      console.log(courses);
+      console.log(courses, "data here");
       dispatch(loadCoursesSuccess(courses));
     }).catch((error) => {
       throw(error)
